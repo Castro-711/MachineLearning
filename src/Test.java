@@ -13,13 +13,13 @@ public class Test
                 "/home/castro/college/fourth_year/sem_1/CS401/blurbs/data/" );
         File[] listOfFiles = directory.listFiles();
 
-        stringFiles.add("ROWS ~SOURCE ~GOAL ~AGENT ~DATA ~METHODS ~RESULTS ~COMMENTS");
+        stringFiles.add("SOURCE ~GOAL ~AGENT ~DATA ~METHODS ~RESULTS ~COMMENTS");
 
         int y = 0;
         for(int i = 0; i < listOfFiles.length; i++)
             if(r.getCurrentFileAsString(listOfFiles[i].getPath()).length() > 0)
             {
-                stringFiles.add(y++ + " ~" + r.getCurrentFileAsString(listOfFiles[i].getPath()));
+                stringFiles.add(r.getCurrentFileAsString(listOfFiles[i].getPath()));
             }
 
         for(String x : stringFiles)
