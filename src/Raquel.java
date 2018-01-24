@@ -35,6 +35,8 @@ public class Raquel
                     stringFile += currentLine + " ";
             }
 
+            input.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Test
@@ -15,13 +15,50 @@ public class Test
 
         stringFiles.add("ROWS ~SOURCE ~GOAL ~AGENT ~DATA ~METHODS ~RESULTS ~COMMENTS");
 
+        int y = 0;
         for(int i = 0; i < listOfFiles.length; i++)
-            stringFiles.add(i + " ~" + r.getCurrentFileAsString(listOfFiles[i].getPath()));
+            if(r.getCurrentFileAsString(listOfFiles[i].getPath()).length() > 0)
+            {
+                stringFiles.add(y++ + " ~" + r.getCurrentFileAsString(listOfFiles[i].getPath()));
+            }
 
         for(String x : stringFiles)
             System.out.println(x);
 
+        File csv = createCSVFile("blurbs");
 
+        try {
+            FileWriter fw = new FileWriter(csv);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for(int i = 0; i < stringFiles.size(); i++)
+                bw.write(stringFiles.get(i) + "\n");
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    // function to create a file
+    public static File createCSVFile(String name)
+    {
+        File file = new File(name + ".csv");
+        try
+        {
+            boolean successfulCreation = file.createNewFile();
+
+            if(successfulCreation)
+                System.out.println("File created successfully..!");
+            else
+                System.out.println("Error: File not created, file with same name in this directory..!");
+
+        }
+        catch(IOException e){ System.err.println("An error occured..!"); e.printStackTrace(); }
+
+        return file;
     }
 
 }
