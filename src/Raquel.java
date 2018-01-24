@@ -14,9 +14,9 @@ public class Raquel
     // get it in a string
     // format string to suit csv file
 
-    // take each line and represent it as the csv row
+    // add numbers for each row and headings in the first row
 
-    // add each row
+    // now I have to add each string to a file
 
 
     public String getCurrentFileAsString(String path)
@@ -64,42 +64,42 @@ public class Raquel
 
     public String removeGoal(String line)
     {
-        String test = line.replaceAll("GOAL(:)? ", "~ ");
+        String test = line.replaceAll("GOAL(:)? ", "~");
 
         return test;
     }
 
     public String removeAgent(String line)
     {
-        String test = line.replaceAll("AGENT(:)? ", "~ ");
+        String test = line.replaceAll("AGENT(:)? ", "~");
 
         return test;
     }
 
     public String removeData(String line)
     {
-        String test = line.replaceAll("DATA(:)? ", "~ ");
+        String test = line.replaceAll("DATA(:)? ", "~");
 
         return test;
     }
 
     public String removeMethods(String line)
     {
-        String test = line.replaceAll("METHODS(:)? ", "~ ");
+        String test = line.replaceAll("METHODS(:)? ", "~");
 
         return test;
     }
 
     public String removeResults(String line)
     {
-        String test = line.replaceAll("RESULTS(:)? ", "~ ");
+        String test = line.replaceAll("RESULTS(:)? ", "~");
 
         return test;
     }
 
     public String removeComments(String line)
     {
-        String test = line.replaceAll("COMMENTS(:)? ", "~ ");
+        String test = line.replaceAll("COMMENTS(:)? ", "~");
 
         return test;
     }
