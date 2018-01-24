@@ -1,20 +1,28 @@
+import java.io.File;
+import java.util.ArrayList;
+
 public class Test
 {
     public static void main(String [] args)
     {
         Raquel r = new Raquel();
 
-        String file = r.getCurrentFileAsString(
-                "/home/castro/college/fourth_year/sem_1/CS401/blurbs/data/b3a27cbc90");
+        ArrayList<String> stringFiles = new ArrayList<String>();
 
-        System.out.println(file);
+        File directory = new File(
+                "/home/castro/college/fourth_year/sem_1/CS401/blurbs/data/" );
+        File[] listOfFiles = directory.listFiles();
+
+        for(int i = 0; i < listOfFiles.length; i++)
+        {
+            stringFiles.add(r.getCurrentFileAsString(listOfFiles[i].getPath()));
+        }
+
+        for(String x : stringFiles)
+            System.out.println(x);
+
+        System.out.println(stringFiles.size());
+
     }
-//    for(int i = 0; i < 7; i++)
-//    {
-//        int x = 1;
-//        cols[i] = stringFile.substring(
-//                stringFile.indexOf(strCols[i]), stringFile.indexOf(i + x));
-//
-//        System.out.println(cols[3]);
-//    }
+
 }
