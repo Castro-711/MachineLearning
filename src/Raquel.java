@@ -32,16 +32,76 @@ public class Raquel
                 currentLine = input.nextLine();
 
                 if(currentLine.length() > 0)
-                {
                     stringFile += currentLine + " ";
-                }
             }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        return stringFile;
+        return removeHeadings(stringFile);
+    }
+
+    public String removeHeadings(String original)
+    {
+        String updated = removeSource(original);
+        updated = removeGoal(updated);
+        updated = removeAgent(updated);
+        updated = removeData(updated);
+        updated = removeMethods(updated);
+        updated = removeResults(updated);
+        updated = removeComments(updated);
+
+        return updated;
+    }
+
+    public String removeSource(String line)
+    {
+        String test = line.replaceAll("SOURCE(:)? ", "");
+
+        return test;
+    }
+
+    public String removeGoal(String line)
+    {
+        String test = line.replaceAll("GOAL(:)? ", "~ ");
+
+        return test;
+    }
+
+    public String removeAgent(String line)
+    {
+        String test = line.replaceAll("AGENT(:)? ", "~ ");
+
+        return test;
+    }
+
+    public String removeData(String line)
+    {
+        String test = line.replaceAll("DATA(:)? ", "~ ");
+
+        return test;
+    }
+
+    public String removeMethods(String line)
+    {
+        String test = line.replaceAll("METHODS(:)? ", "~ ");
+
+        return test;
+    }
+
+    public String removeResults(String line)
+    {
+        String test = line.replaceAll("RESULTS(:)? ", "~ ");
+
+        return test;
+    }
+
+    public String removeComments(String line)
+    {
+        String test = line.replaceAll("COMMENTS(:)? ", "~ ");
+
+        return test;
     }
 
 }

@@ -14,14 +14,11 @@ public class Test
         File[] listOfFiles = directory.listFiles();
 
         for(int i = 0; i < listOfFiles.length; i++)
-        {
             stringFiles.add(r.getCurrentFileAsString(listOfFiles[i].getPath()));
-        }
 
         for(String x : stringFiles)
             System.out.println(x);
 
-        System.out.println(stringFiles.size());
 
     }
 
