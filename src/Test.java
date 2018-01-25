@@ -18,18 +18,18 @@ public class Test
         double totalWords = 57125.0;
 
         for(int i = 0; i < listOfFiles.length; i++)
-            if(r.getCurrentFileAsString(listOfFiles[i].getPath()).length() > 0)
+            if(r.getCurrentFileAsString(listOfFiles[i].getPath()).length() > 1)
             {
-                String[] currentSplit = r.getCurrentFileAsString(listOfFiles[i].getPath())
+                String[] currentWordCount = r.getCurrentFileAsString(listOfFiles[i].getPath())
                         .split(" ");
 
                 String[] sourceSplit = r.getCurrentFileAsString(listOfFiles[i].getPath())
                         .split("~");
 
-                totalWords += currentSplit.length;
-                stringFiles.add(currentSplit.length + " ~" +
-                        sourceSplit[0].toCharArray().length + " ~" +
-                        r.getCurrentFileAsString(listOfFiles[i].getPath()) );
+                totalWords += currentWordCount.length;
+                stringFiles.add(currentWordCount.length + " ~" +
+                    sourceSplit[0].toCharArray().length + " ~" +
+                    r.getCurrentFileAsString(listOfFiles[i].getPath()) );
             }
 
         for(String x : stringFiles)
@@ -63,12 +63,12 @@ public class Test
             boolean successfulCreation = file.createNewFile();
 
             if(successfulCreation)
-                System.out.println("File created successfully..!");
+                System.out.println("File created successfully..~");
             else
-                System.out.println("Error: File not created, file with same name in this directory..!");
+                System.out.println("Error: File not created, file with same name in this directory..~");
 
         }
-        catch(IOException e){ System.err.println("An error occured..!"); e.printStackTrace(); }
+        catch(IOException e){ System.err.println("An error occured..~"); e.printStackTrace(); }
 
         return file;
     }

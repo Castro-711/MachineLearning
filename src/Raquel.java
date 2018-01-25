@@ -82,7 +82,7 @@ public class Raquel
 
     public String removeMethods(String line)
     {
-        String test = line.replaceAll("METHODS(:)? ", "~");
+    String test = line.replaceAll("METHODS(:)? ", "~");
 
         return test;
     }
