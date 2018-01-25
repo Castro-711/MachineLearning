@@ -2,7 +2,6 @@ setwd('~/IdeaProjects/LaCasaDePapel/')
 
 dataset <- read.csv(file = "blurbs.csv", header = TRUE, sep = "~", quot="")
 
-newdataset <- dataset[-c(35, 40, 152, 190, 343)]
 install.packages('caTools')
 
 library(caTools)
@@ -14,8 +13,31 @@ test_set = subset(dataset, split == FALSE)
 # Fitting simple linear regression to training set
 # the formula here is that the number of characters
 # in the source paragraph
-regressor = lm(formula = SOURCECHARC ~ WORDCOUNT,
+regressor = lm(formula = SOURCELENGTH ~ WORDCOUNT,
                data = training_set)
 
 # Predicting the Test set results
 y_pred = predict(regressor, newdata = test_set)
+
+# Visualising the Training set results
+install.packages('ggplot2')
+
+library(ggplot2)
+ggplot() +
+  geom_point(aes(x = training_set$WORDCOUNT, y = training_set$SOURCELENGTH),
+             colour = 'red') +
+  geom_line(aes(x = training_set$WORDCOUNT, y =  predict(regressor, newdata = training_set) ),
+            colour = 'blue') +
+  ggtitle('Article Total Word Count vs Article Source Length (chars)') +
+  xlab('WordCount') +
+  ylab('SourceLength')
+
+# regressor is always a trait of the training set
+ggplot() +
+  geom_point(aes(x = test_set$WORDCOUNT, y = test_set$SOURCELENGTH),
+             colour = 'red') +
+  geom_line(aes(x = training_set$WORDCOUNT, y =  predict(regressor, newdata = training_set) ),
+            colour = 'blue') +
+  ggtitle('Article Total Word Count vs Article Source Length (chars)') +
+  xlab('WordCount') +
+  ylab('SourceLength')
