@@ -13,18 +13,29 @@ public class Test
                 "/home/castro/college/fourth_year/sem_1/CS401/blurbs/data/" );
         File[] listOfFiles = directory.listFiles();
 
-        stringFiles.add("WORDCOUNT ~SOURCE ~GOAL ~AGENT ~DATA ~METHODS ~RESULTS ~COMMENTS");
+        stringFiles.add("WORDCOUNT ~SOURCECHARC ~SOURCE ~GOAL ~AGENT ~DATA ~METHODS ~RESULTS ~COMMENTS");
+
+        double totalWords = 57125.0;
 
         for(int i = 0; i < listOfFiles.length; i++)
             if(r.getCurrentFileAsString(listOfFiles[i].getPath()).length() > 0)
             {
                 String[] currentSplit = r.getCurrentFileAsString(listOfFiles[i].getPath())
                         .split(" ");
-                stringFiles.add(currentSplit.length + " ~" + r.getCurrentFileAsString(listOfFiles[i].getPath()));
+
+                String[] sourceSplit = r.getCurrentFileAsString(listOfFiles[i].getPath())
+                        .split("~");
+
+                totalWords += currentSplit.length;
+                stringFiles.add(currentSplit.length + " ~" +
+                        sourceSplit[0].toCharArray().length + " ~" +
+                        r.getCurrentFileAsString(listOfFiles[i].getPath()) );
             }
 
         for(String x : stringFiles)
             System.out.println(x);
+
+        System.out.println(totalWords);
 
         File csv = createCSVFile("blurbs");
 

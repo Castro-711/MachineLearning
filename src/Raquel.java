@@ -4,11 +4,6 @@ import java.util.Scanner;
 
 public class Raquel
 {
-    private String [] cols;
-    private ArrayList<String[]> rows;
-    private int rowCount;
-    private String[] strCols =
-            { "SOURCE", "AGENT", "GOAL", "DATA", "METHODS", "RESULTS", "COMMENTS" };
 
     // read in the file
     // get it in a string
